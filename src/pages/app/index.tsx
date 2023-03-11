@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchVideos } from '../../redux/slices/display/displaySlice'
 import { RootState, AppDispatch } from '../../redux/store'
+import Layout from '../../components/Layout'
 
-export default function App() {
+const App: React.FC = () => {
   const videosList = useSelector((state: RootState) => state.videos.videosList)
   const dispatch = useDispatch<AppDispatch>()
 
@@ -12,10 +13,12 @@ export default function App() {
   }, [])
 
   return (
-    <div>
+    <Layout>
       {videosList.map((item, index) => (
         <div key={index}>{item?.attributes.title}</div>
       ))}
-    </div>
+    </Layout>
   )
 }
+
+export default App

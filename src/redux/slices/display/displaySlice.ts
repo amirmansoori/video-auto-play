@@ -14,7 +14,6 @@ const initialState: IInitialState = {
 }
 
 const url = `${process.env.API_URL || 'http://api.aparat.com/fa/v1'}/video/video/mostViewedVideos`
-console.log(url)
 
 export const fetchVideos = createAsyncThunk('videos/fetchVideos', async () => {
   const response = await axios.get(url)
