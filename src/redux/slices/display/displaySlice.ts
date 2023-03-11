@@ -1,14 +1,19 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
-require('dotenv').config()
+import type { IVideo } from './../../../types/model/video'
 
-const initialState = {
+export interface IInitialState {
+  loading: boolean
+  videosList: IVideo[]
+  error: string
+}
+const initialState: IInitialState = {
   loading: false,
   videosList: [],
   error: '',
 }
 
-const url = `${process.env.API_URL}/video/video/mostViewedVideos`
+const url = `${process.env.API_URL || 'http://api.aparat.com/fa/v1'}/video/video/mostViewedVideos`
 console.log(url)
 
 export const fetchVideos = createAsyncThunk('videos/fetchVideos', async () => {
