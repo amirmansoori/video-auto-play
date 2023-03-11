@@ -6,11 +6,11 @@ type Props = { children: React.ReactNode }
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <main>
+    <section className="flex flex-col gap-8">
       <Header />
-      {children}
+      <main className="px-4 py-28">{children}</main>
       <Footer />
-    </main>
+    </section>
   )
 }
 
